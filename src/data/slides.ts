@@ -13,64 +13,67 @@ export type Section = {
   slides: Slide[]
 }
 
-// サンプルデータ（ライトグレイッシュトーン：青系→ピンク系グラデーション）
+// フロントエンド学習ロードマップ
 export const sections: Section[] = [
   {
     id: 1,
-    name: 'プロジェクト概要',
+    name: 'Step 1: Web基礎',
     color: '#a8c4c9', // ティール（青系）
     slides: [
-      { id: 101, title: 'はじめに', content: '本プロジェクトの目的と背景について説明します。' },
-      { id: 102, title: 'ビジョン', content: 'ユーザー中心のプロダクト開発を目指します。' },
-      { id: 103, title: 'スコープ', content: 'MVP機能の定義と優先順位付け。' },
+      { id: 101, title: 'HTML', content: 'Webページの構造を定義するマークアップ言語。セマンティックHTMLを意識しよう。' },
+      { id: 102, title: 'CSS', content: 'スタイリングの基本。Flexbox、Gridをマスターすれば大抵のレイアウトは組める。' },
+      { id: 103, title: 'JavaScript基礎', content: '変数、関数、配列、オブジェクト、DOM操作。ここが全ての土台になる。' },
     ],
   },
   {
     id: 2,
-    name: '目標と課題',
+    name: 'Step 2: JavaScript深掘り',
     color: '#a8c9c0', // ミントグリーン
     slides: [
-      { id: 201, title: '目標設定', content: 'KPI: DAU 10,000、継続率 40%を目指します。' },
-      { id: 202, title: '現状の課題', content: 'レガシーシステムの技術的負債が蓄積。' },
+      { id: 201, title: 'ES6+構文', content: 'アロー関数、分割代入、スプレッド構文、テンプレートリテラル。モダンJSの必須知識。' },
+      { id: 202, title: '非同期処理', content: 'Promise、async/await。API通信には必須。コールバック地獄を避けよう。' },
+      { id: 203, title: 'モジュール', content: 'import/exportでコードを分割。保守性の高いコードを書く第一歩。' },
     ],
   },
   {
     id: 3,
-    name: '技術スタック',
+    name: 'Step 3: React入門',
     color: '#c9bcd4', // ラベンダー
     slides: [
-      { id: 301, title: 'フロントエンド', content: 'React、TypeScript、Tailwind CSSを採用。' },
-      { id: 302, title: 'バックエンド', content: 'Node.js + Express、PostgreSQLで構築。' },
-      { id: 303, title: 'インフラ', content: 'AWS上でコンテナベースのデプロイ。' },
-      { id: 304, title: 'CI/CD', content: 'GitHub ActionsとArgo CDで自動化。' },
+      { id: 301, title: 'コンポーネント', content: 'UIを再利用可能な部品に分割。関数コンポーネントが主流。' },
+      { id: 302, title: 'JSX', content: 'JavaScript内でHTMLライクな記法。最初は違和感あるけどすぐ慣れる。' },
+      { id: 303, title: 'Props', content: '親から子へデータを渡す仕組み。コンポーネント間の通信の基本。' },
+      { id: 304, title: 'useState', content: '状態管理の基本Hook。ボタンクリックでカウントアップから始めよう。' },
     ],
   },
   {
     id: 4,
-    name: 'タイムライン',
+    name: 'Step 4: React実践',
     color: '#d4c0c9', // モーブ
     slides: [
-      { id: 401, title: 'フェーズ1：設計', content: '要件定義、UI/UXデザイン、アーキテクチャ設計。' },
-      { id: 402, title: 'フェーズ2：実装', content: 'コア機能の開発とユニットテスト。' },
-      { id: 403, title: 'フェーズ3：テスト', content: '統合テスト、UAT、パフォーマンステスト。' },
+      { id: 401, title: 'useEffect', content: '副作用を扱うHook。API通信、イベントリスナー登録などに使う。' },
+      { id: 402, title: 'カスタムHook', content: 'ロジックの再利用。useXxxという命名規則で自作Hookを作ろう。' },
+      { id: 403, title: 'React Router', content: 'SPAでのページ遷移。URLに応じてコンポーネントを切り替える。' },
     ],
   },
   {
     id: 5,
-    name: 'チーム構成',
+    name: 'Step 5: 開発環境',
     color: '#d4b8bc', // ローズピンク
     slides: [
-      { id: 501, title: 'メンバー', content: 'フロントエンド2名、バックエンド2名、デザイナー1名。' },
-      { id: 502, title: '役割分担', content: 'スクラム体制でスプリントを回します。' },
+      { id: 501, title: 'TypeScript', content: '型があるとバグが減る。最初は面倒でも、規模が大きくなると必須。' },
+      { id: 502, title: 'Vite', content: '高速な開発サーバーとビルドツール。Create React Appより断然速い。' },
+      { id: 503, title: 'Git/GitHub', content: 'バージョン管理は必須スキル。ブランチ、プルリクの流れを覚えよう。' },
     ],
   },
   {
     id: 6,
-    name: 'まとめ',
+    name: 'Step 6: 次のステップ',
     color: '#dbb0a8', // コーラルピンク
     slides: [
-      { id: 601, title: '結論', content: '本プロジェクトで価値あるプロダクトを届けます。' },
-      { id: 602, title: 'Q&A', content: 'ご清聴ありがとうございました。質問をお受けします。' },
+      { id: 601, title: 'Tailwind CSS', content: 'ユーティリティファーストのCSSフレームワーク。慣れると爆速でスタイリングできる。' },
+      { id: 602, title: 'Next.js', content: 'Reactのフレームワーク。SSR、API Routes、ファイルベースルーティング。' },
+      { id: 603, title: '実際に作る', content: 'チュートリアルを卒業して、自分のアイデアを形にしよう。それが一番の学習。' },
     ],
   },
 ]

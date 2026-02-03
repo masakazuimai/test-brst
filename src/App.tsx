@@ -36,7 +36,7 @@ function App() {
       <div className="mx-auto max-w-6xl">
         {/* ヘッダー */}
         <h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
-          プレゼンテーションビューアー
+          Brainstorm Viewer
         </h1>
 
         {/* セクションごとに表示 */}
