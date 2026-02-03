@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  /* ライトグレイッシュトーンのカスタムカラー */
+  --color-muted-beige: #d4c9a8;
+  --color-muted-sage: #b8c9a8;
+  --color-muted-olive: #c4c9a0;
+  --color-muted-lavender: #c9bcd4;
+  --color-muted-teal: #a8c4c9;
+  --color-muted-rose: #d4b8bc;
+}
