@@ -10,6 +10,14 @@ type SlideModalProps = {
   onNext: () => void
 }
 
+// YouTube URLかどうか判定
+function isYouTubeUrl(url: string): boolean {
+  return url.includes('youtube.com')
+}
+
+// base パスを取得
+const basePath = import.meta.env.BASE_URL
+
 // 拡大表示用のモーダルコンポーネント
 export function SlideModal({
   slides,
@@ -89,6 +97,12 @@ export function SlideModal({
     return 'translateX(0)'
   }
 
+  // メディアタイプの判定
+  const hasVideo = Boolean(currentSlide.videoUrl)
+  const hasImage = Boolean(currentSlide.imageUrl)
+  const isYouTube = hasVideo && isYouTubeUrl(currentSlide.videoUrl!)
+  const isLocalVideo = hasVideo && !isYouTube
+
   return (
     <div
       className={`
@@ -129,24 +143,56 @@ export function SlideModal({
             transition-all duration-150 ease-out
           "
         >
-          {/* タイトル部分 */}
-          <div
-            style={{ backgroundColor: currentSlide.color }}
-            className="shrink-0 px-8 py-4 md:px-12 md:py-6"
-          >
-            <h2 className="text-2xl font-bold text-gray-700 md:text-4xl">
-              {currentSlide.title}
-            </h2>
-          </div>
-          {/* 本文部分 */}
-          <div
-            style={{ backgroundColor: `color-mix(in srgb, ${currentSlide.color} 15%, white)` }}
-            className="flex-1 px-8 py-6 md:px-12 md:py-8"
-          >
-            <p className="text-lg text-gray-600 md:text-xl">
-              {currentSlide.content}
-            </p>
-          </div>
+          {isYouTube ? (
+            // YouTube動画
+            <iframe
+              src={currentSlide.videoUrl}
+              title={currentSlide.title}
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          ) : isLocalVideo ? (
+            // ローカル動画
+            <video
+              key={currentSlide.id}
+              src={`${basePath}${currentSlide.videoUrl}`}
+              className="h-full w-full object-cover"
+              controls
+              autoPlay
+              muted
+            />
+          ) : hasImage ? (
+            // 画像
+            <img
+              src={`${basePath}${currentSlide.imageUrl}`}
+              alt={currentSlide.title}
+              className="h-full w-full object-cover"
+            />
+          ) : (
+            // 通常のテキストスライド
+            <>
+              {/* タイトル部分 */}
+              <div
+                style={{ backgroundColor: currentSlide.color }}
+                className="shrink-0 px-8 py-4 md:px-12 md:py-6"
+              >
+                <h2 className="text-2xl font-bold text-gray-700 md:text-4xl">
+                  {currentSlide.title}
+                </h2>
+              </div>
+              {/* 本文部分 */}
+              <div
+                style={{ backgroundColor: `color-mix(in srgb, ${currentSlide.color} 15%, white)` }}
+                className="flex-1 px-8 py-6 md:px-12 md:py-8"
+              >
+                <p className="text-lg text-gray-600 md:text-xl">
+                  {currentSlide.content}
+                </p>
+              </div>
+            </>
+          )}
         </div>
 
         {/* 左矢印ボタン */}
